@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_social_app/src/demo/day_02_view.dart';
+import 'package:flutter_social_app/src/demo/reusable_widgets_showcase_view.dart';
 import 'package:flutter_social_app/src/themes/app_colors.dart';
-import 'demo/common_widgets_demo_view.dart';
 import 'demo/day_01_view.dart';
 import 'demo/showcase_home_view.dart';
 import 'settings/settings_controller.dart';
@@ -47,8 +47,8 @@ class MyApp extends StatelessWidget {
                     return SettingsView(controller: settingsController);
                   case ShowcaseHomeView.routeName:
                     return const ShowcaseHomeView();
-                  case CommonWidgetsDemoView.routeName:
-                    return const CommonWidgetsDemoView();
+                  case ReusableWidgetsShowcaseView.routeName:
+                    return const ReusableWidgetsShowcaseView();
                   case Day01View.routeName:
                     return const Day01View();
                   case Day02View.routeName:

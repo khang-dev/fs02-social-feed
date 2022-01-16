@@ -25,7 +25,7 @@ class DarkTheme {
       dividerTheme: const DividerThemeData(
         thickness: 1,
       ),
-      appBarTheme: const AppBarTheme(backgroundColor: darkBackground, elevation: 1.0));
+      appBarTheme: const AppBarTheme(backgroundColor: darkBackground, elevation: 0.0));
 }
 
 class GradientPalette {

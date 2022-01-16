@@ -6,15 +6,15 @@ import 'package:flutter_social_app/src/common/widgets/conversation_view.dart';
 import 'package:flutter_social_app/src/themes/app_colors.dart';
 import 'package:flutter_social_app/src/themes/app_text_styles.dart';
 
-class CommonWidgetsDemoView extends StatelessWidget {
-  static const routeName = '/commonWidgetsDemo';
-  const CommonWidgetsDemoView({Key? key}) : super(key: key);
+class ReusableWidgetsShowcaseView extends StatelessWidget {
+  static const routeName = '/reusableWidgetsShowcase';
+  const ReusableWidgetsShowcaseView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Common Widgets'),
+        title: const Text('Reusable Widgets'),
       ),
       body: ListView(
         children: [
@@ -24,12 +24,17 @@ class CommonWidgetsDemoView extends StatelessWidget {
           _buildStatusWidgetsRow(),
           const _WidgetNameLabel('Conversation View'),
           ConversationView(
-            avatarWidget: const CircularUserAvatar(
-                imageUrl:
-                    'https://vtv1.mediacdn.vn/thumb_w/650/2021/11/18/tom-holland-in-spider-man-far-from-home-16372219999081867730777-crop-1637222004036539914417.jpg'),
-            lastMessage: 'Hey! I need your help!!!',
+            avatarWidget: const CircularUserAvatar(imageUrl: 'https://i.ibb.co/mhXrrTm/avt-6.png'),
+            lastMessage: 'Where are you now',
             title: 'Petter Parker',
             updatedTime: DateTime.now(),
+            isUnread: true,
+          ),
+          ConversationView(
+            avatarWidget: const CircularUserAvatar(imageUrl: 'https://i.ibb.co/cydcfMj/avt-5.png'),
+            lastMessage: 'Talk to you later',
+            title: 'Tim Cook',
+            updatedTime: DateTime.now().add(const Duration(hours: -5)),
           )
         ],
       ),
@@ -43,22 +48,32 @@ class CommonWidgetsDemoView extends StatelessWidget {
           width: 80,
           child: CircularUserAvatar(
             onPressed: () {},
-            imageUrl: 'https://source.unsplash.com/user/c_v_r/100x100',
+            imageUrl: 'https://i.ibb.co/chHwp47/avt-8.png',
             size: 60,
             bottomRightWidget: const ActiveStatusIndicator(
               isActive: true,
             ),
-            displayName: 'Khang',
+            displayName: 'Tiểu My',
           ),
         ),
         SizedBox(
           width: 80,
           child: CircularUserAvatar(
             onPressed: () {},
-            imageUrl: 'https://source.unsplash.com/user/c_v_r/100x100',
+            imageUrl: 'https://i.ibb.co/chHwp47/avt-8.png',
+            size: 60,
+            displayName: 'Tiểu My',
+            hasBorder: true,
+          ),
+        ),
+        SizedBox(
+          width: 80,
+          child: CircularUserAvatar(
+            onPressed: () {},
+            imageUrl: 'https://i.ibb.co/chHwp47/avt-8.png',
             size: 60,
             bottomRightWidget: const CircularNumberBadge(10),
-            displayName: 'Khang',
+            displayName: 'Tiểu My',
           ),
         ),
       ],
