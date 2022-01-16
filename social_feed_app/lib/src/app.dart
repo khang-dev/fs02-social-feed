@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_social_app/src/demo/day_02_view.dart';
+import 'package:flutter_social_app/src/themes/app_colors.dart';
 import 'demo/common_widgets_demo_view.dart';
+import 'demo/day_01_view.dart';
 import 'demo/demo_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
@@ -33,7 +36,7 @@ class MyApp extends StatelessWidget {
           ],
           onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
           theme: ThemeData(),
-          darkTheme: ThemeData.dark(),
+          darkTheme: DarkTheme.themeData,
           themeMode: settingsController.themeMode,
           onGenerateRoute: (RouteSettings routeSettings) {
             return MaterialPageRoute<void>(
@@ -46,6 +49,10 @@ class MyApp extends StatelessWidget {
                     return const DemoView();
                   case CommonWidgetsDemoView.routeName:
                     return const CommonWidgetsDemoView();
+                  case Day01View.routeName:
+                    return const Day01View();
+                  case Day02View.routeName:
+                    return const Day02View();
                   default:
                     return const DemoView();
                 }
