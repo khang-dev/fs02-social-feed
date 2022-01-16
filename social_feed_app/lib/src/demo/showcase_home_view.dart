@@ -6,10 +6,10 @@ import 'common_widgets_demo_view.dart';
 import 'day_01_view.dart';
 import 'day_02_view.dart';
 
-class DemoView extends StatelessWidget {
-  static const routeName = '/demo';
+class ShowcaseHomeView extends StatelessWidget {
+  static const routeName = '/showcaseHome';
 
-  const DemoView({Key? key}) : super(key: key);
+  const ShowcaseHomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

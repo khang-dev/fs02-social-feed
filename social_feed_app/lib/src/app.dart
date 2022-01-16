@@ -5,7 +5,7 @@ import 'package:flutter_social_app/src/demo/day_02_view.dart';
 import 'package:flutter_social_app/src/themes/app_colors.dart';
 import 'demo/common_widgets_demo_view.dart';
 import 'demo/day_01_view.dart';
-import 'demo/demo_view.dart';
+import 'demo/showcase_home_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
 
@@ -45,8 +45,8 @@ class MyApp extends StatelessWidget {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                  case DemoView.routeName:
-                    return const DemoView();
+                  case ShowcaseHomeView.routeName:
+                    return const ShowcaseHomeView();
                   case CommonWidgetsDemoView.routeName:
                     return const CommonWidgetsDemoView();
                   case Day01View.routeName:
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
                   case Day02View.routeName:
                     return const Day02View();
                   default:
-                    return const DemoView();
+                    return const ShowcaseHomeView();
                 }
               },
             );

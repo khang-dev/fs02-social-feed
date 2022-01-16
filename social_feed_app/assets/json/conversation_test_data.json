@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "avatarUrl": "https://i.ibb.co/chHwp47/avt-8.png",
+        "title": "Tiểu My",
+        "lastMessage": "cafe khum ?",
+        "lastUpdatedTime": "2022-01-17 08:47:00",
+        "isUnread": true
+    },
+    {
+        "id": 1,
+        "avatarUrl": "https://i.ibb.co/kDRfSRH/avt-3.png",
+        "title": "Thúy Kiều",
+        "lastMessage": "Bai anh 💋",
+        "lastUpdatedTime": "2022-01-17 00:05:00",
+        "isUnread": true
+    },
+    {
+        "id": 2,
+        "avatarUrl": "https://i.ibb.co/DKHDNzS/avt-7.png",
+        "title": "Boss",
+        "lastMessage": "I'm hiring mobile developers with at least 2 years of experience",
+        "lastUpdatedTime": "2022-01-16 02:47:00",
+        "isUnread": false
+    },
+    {
+        "id": 3,
+        "avatarUrl": "https://i.ibb.co/cydcfMj/avt-5.png",
+        "title": "Tim",
+        "lastMessage": "g9 bro 💤",
+        "lastUpdatedTime": "2022-01-15 07:47:00",
+        "isUnread": false
+    },
+    {
+        "id": 4,
+        "avatarUrl": "https://i.ibb.co/mhXrrTm/avt-6.png",
+        "title": "Steave",
+        "lastMessage": "See you later 😚",
+        "lastUpdatedTime": "2022-01-14 09:47:00",
+        "isUnread": false
+    }
+]

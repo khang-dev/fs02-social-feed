@@ -1,12 +1,61 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_social_app/src/common/widgets/active_status_indicator.dart';
 import 'package:flutter_social_app/src/common/widgets/circular_user_avatar.dart';
 import 'package:flutter_social_app/src/common/widgets/conversation_view.dart';
+import 'package:flutter_social_app/src/models/conversation.dart';
+import 'package:flutter_social_app/src/models/user.dart';
 import 'package:flutter_social_app/src/themes/app_text_styles.dart';
 
-class Day02View extends StatelessWidget {
+class Day02View extends StatefulWidget {
   static const routeName = '/day02';
   const Day02View({Key? key}) : super(key: key);
+
+  @override
+  State<Day02View> createState() => _Day02ViewState();
+}
+
+class _Day02ViewState extends State<Day02View> {
+  List<User> users = [];
+  List<Conversation> conversations = [];
+  @override
+  void initState() {
+    super.initState();
+    log(DateTime.now().toString());
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      _loadUsersJsonData();
+      _loadConversationJsonData();
+    });
+  }
+
+  Future<void> _loadUsersJsonData() async {
+    try {
+      String usersDataStr = await rootBundle.loadString('assets/json/users_test_data.json');
+      List<dynamic> usersList = json.decode(usersDataStr);
+
+      setState(() {
+        users = usersList.map((e) => User.fromJson(e)).toList();
+      });
+    } catch (ex) {
+      log(ex.toString());
+    }
+  }
+
+  Future<void> _loadConversationJsonData() async {
+    try {
+      String conversationsDataStr = await rootBundle.loadString('assets/json/conversation_test_data.json');
+      List<dynamic> conversationsList = json.decode(conversationsDataStr);
+
+      setState(() {
+        conversations = conversationsList.map((e) => Conversation.fromJson(e)).toList();
+      });
+    } catch (ex) {
+      log(ex.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +69,7 @@ class Day02View extends StatelessWidget {
               'Messages',
               style: TextStyles.heading1Bold,
             ),
+            actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
           ),
           SliverToBoxAdapter(
             child: Container(
@@ -28,20 +78,24 @@ class Day02View extends StatelessWidget {
               width: double.infinity,
               child: ListView.builder(
                 itemBuilder: (_, index) {
-                  return SizedBox(
-                    width: 90,
+                  final model = users[index];
+                  return Container(
+                    width: 80,
+                    margin: EdgeInsets.only(left: index == 0 ? 8 : 0, right: index == (users.length - 1) ? 8 : 0),
                     child: CircularUserAvatar(
                       onPressed: () {},
-                      imageUrl: 'https://source.unsplash.com/user/c_v_r/100x100',
-                      size: 60,
-                      bottomRightWidget: const ActiveStatusIndicator(
-                        isActive: true,
+                      imageUrl: model.avatarUrl,
+                      bottomRightWidget: ActiveStatusIndicator(
+                        isActive: model.isActive,
                       ),
-                      displayName: 'Khang',
+                      displayName: model.displayName,
+                      hasBorder: model.hasStory,
                     ),
                   );
                 },
                 scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                itemCount: users.length,
               ),
             ),
           ),
@@ -52,17 +106,19 @@ class Day02View extends StatelessWidget {
           ),
           SliverList(
               delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+            final model = conversations[index];
             return ConversationView(
               onPressed: () {},
-              avatarWidget: const CircularUserAvatar(
-                imageUrl: 'https://source.unsplash.com/user/c_v_r/100x100',
+              avatarWidget: CircularUserAvatar(
+                imageUrl: model.avatarUrl,
                 size: 60,
               ),
-              lastMessage: 'Nhậu khum?',
-              title: 'Khang Nguyen',
-              updatedTime: DateTime.now(),
+              lastMessage: model.lastMessage,
+              title: model.title,
+              updatedTime: model.lastUpdatedTime,
+              isUnread: model.isUnread,
             );
-          }, childCount: 6))
+          }, childCount: conversations.length))
         ],
       ),
     );

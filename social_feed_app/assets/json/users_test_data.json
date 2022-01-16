@@ -1,0 +1,58 @@
+[
+    {
+        "id": 0,
+        "avatarUrl": "https://i.ibb.co/chHwp47/avt-8.png",
+        "displayName": "Tiểu My",
+        "isActive": true,
+        "hasStory": true
+    },
+    {
+        "id": 1,
+        "avatarUrl": "https://i.ibb.co/QjYtFQm/avt-1.png",
+        "displayName": "Marry",
+        "isActive": true,
+        "hasStory": true
+    },
+    {
+        "id": 2,
+        "avatarUrl": "https://i.ibb.co/rZghhCZ/avt-2.png",
+        "displayName": "Mark",
+        "isActive": true,
+        "hasStory": true
+    },
+    {
+        "id": 3,
+        "avatarUrl": "https://i.ibb.co/kDRfSRH/avt-3.png",
+        "displayName": "Thúy Kiều",
+        "isActive": true,
+        "hasStory": false
+    },
+    {
+        "id": 4,
+        "avatarUrl": "https://i.ibb.co/L5y7v4w/avt-4.png",
+        "displayName": "Amily",
+        "isActive": false,
+        "hasStory": false
+    },
+    {
+        "id": 5,
+        "avatarUrl": "https://i.ibb.co/cydcfMj/avt-5.png",
+        "displayName": "Tim",
+        "isActive": false,
+        "hasStory": false
+    },
+    {
+        "id": 6,
+        "avatarUrl": "https://i.ibb.co/mhXrrTm/avt-6.png",
+        "displayName": "Steave",
+        "isActive": false,
+        "hasStory": false
+    },
+    {
+        "id": 7,
+        "avatarUrl": "https://i.ibb.co/DKHDNzS/avt-7.png",
+        "displayName": "Boss",
+        "isActive": false,
+        "hasStory": false
+    }
+]

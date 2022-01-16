@@ -16,8 +16,7 @@ class CommonWidgetsDemoView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Common Widgets'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
           const _WidgetNameLabel('Circular User Avatar'),
           _buildUserAvatarWidgets(),
