@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social_app/src/themes/app_colors.dart';
 import 'package:flutter_social_app/src/themes/app_text_styles.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
+import 'circular_user_avatar.dart';
+
 class ConversationView extends StatelessWidget {
-  final Widget avatarWidget;
   final double? height;
   final EdgeInsets? padding;
   final String title;
   final String lastMessage;
   final DateTime updatedTime;
   final bool isUnread;
+  final String avatarUrl;
   final VoidCallback? onPressed;
 
   const ConversationView(
       {Key? key,
-      required this.avatarWidget,
       this.height,
       this.padding,
       this.onPressed,
       this.isUnread = false,
+      required this.avatarUrl,
       required this.title,
       required this.lastMessage,
       required this.updatedTime})
@@ -39,36 +40,14 @@ class ConversationView extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                avatarWidget,
+                CircularUserAvatar(
+                  imageUrl: avatarUrl,
+                  size: 60,
+                ),
                 const SizedBox(
                   width: 12,
                 ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _buildTitleAndTime(),
-                      const SizedBox(
-                        height: 6,
-                      ),
-                      Expanded(
-                          child: Padding(
-                        padding: const EdgeInsets.only(right: 6),
-                        child: Text(
-                          lastMessage,
-                          maxLines: 1,
-                          style: TextStyles.body1.copyWith(color: _textColor),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      )),
-                      const Divider(
-                        height: 1,
-                        thickness: 1,
-                      ),
-                    ],
-                  ),
-                )
+                _buildConversationContent()
               ],
             ),
           ),
@@ -77,8 +56,37 @@ class ConversationView extends StatelessWidget {
     );
   }
 
-  Color get _timeTextColor {
-    return isUnread ? Colors.white : DarkTheme.subTextColor;
+  Expanded _buildConversationContent() {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _buildTitleAndTime(),
+          const SizedBox(
+            height: 6,
+          ),
+          _buildLastMessage(),
+          const Divider(
+            height: 1,
+            thickness: 1,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Expanded _buildLastMessage() {
+    return Expanded(
+        child: Padding(
+      padding: const EdgeInsets.only(right: 6),
+      child: Text(
+        lastMessage,
+        maxLines: 1,
+        style: TextStyles.body1.copyWith(color: _textColor, fontWeight: isUnread ? FontWeight.w600 : FontWeight.w400),
+        overflow: TextOverflow.ellipsis,
+      ),
+    ));
   }
 
   Color get _textColor {
@@ -92,12 +100,14 @@ class ConversationView extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyles.body1Bold.copyWith(color: _textColor),
+            style: TextStyles.body1Bold.copyWith(
+              color: _textColor,
+            ),
           ),
           const Spacer(),
           Text(
             timeago.format(updatedTime),
-            style: TextStyles.small1Light.copyWith(color: _timeTextColor),
+            style: TextStyles.small1Light,
           ),
           const SizedBox(
             width: 14,

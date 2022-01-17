@@ -24,14 +24,14 @@ class ReusableWidgetsShowcaseView extends StatelessWidget {
           _buildStatusWidgetsRow(),
           const _WidgetNameLabel('Conversation View'),
           ConversationView(
-            avatarWidget: const CircularUserAvatar(imageUrl: 'https://i.ibb.co/mhXrrTm/avt-6.png'),
+            avatarUrl: 'https://i.ibb.co/mhXrrTm/avt-6.png',
             lastMessage: 'Where are you now',
             title: 'Petter Parker',
             updatedTime: DateTime.now(),
             isUnread: true,
           ),
           ConversationView(
-            avatarWidget: const CircularUserAvatar(imageUrl: 'https://i.ibb.co/cydcfMj/avt-5.png'),
+            avatarUrl: 'https://i.ibb.co/cydcfMj/avt-5.png',
             lastMessage: 'Talk to you later',
             title: 'Tim Cook',
             updatedTime: DateTime.now().add(const Duration(hours: -5)),

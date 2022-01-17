@@ -32,10 +32,10 @@ class CircularUserAvatar extends StatelessWidget {
           shape: BoxShape.circle,
           gradient: hasBorder
               ? const LinearGradient(colors: [
-                  GradientPalette.orange,
                   GradientPalette.pink,
-                ])
-              : const LinearGradient(colors: [Colors.transparent, Colors.transparent])),
+                  GradientPalette.orange,
+                ], begin: Alignment.topLeft, end: Alignment.bottomRight)
+              : null),
       child: ClipOval(
         child: InkWell(
           borderRadius: BorderRadius.circular(size ?? _defaultSize),
@@ -47,15 +47,9 @@ class CircularUserAvatar extends StatelessWidget {
             height: size ?? _defaultSize,
             errorWidget: (context, url, error) {
               log(error.toString());
-              return Container(
-                color: DarkTheme.darkGrey,
-              );
+              return const _ErrorImageContent();
             },
-            placeholder: (context, _) {
-              return Container(
-                color: DarkTheme.darkGrey,
-              );
-            },
+            placeholder: (context, _) => const _ErrorImageContent(),
           ),
         ),
       ),
@@ -86,6 +80,19 @@ class CircularUserAvatar extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class _ErrorImageContent extends StatelessWidget {
+  const _ErrorImageContent({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: DarkTheme.darkGrey,
     );
   }
 }

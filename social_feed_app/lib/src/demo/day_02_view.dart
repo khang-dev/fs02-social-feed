@@ -24,7 +24,6 @@ class _Day02ViewState extends State<Day02View> {
   @override
   void initState() {
     super.initState();
-    log(DateTime.now().toString());
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       _loadUsersJsonData();
       _loadConversationJsonData();
@@ -109,10 +108,7 @@ class _Day02ViewState extends State<Day02View> {
             final model = conversations[index];
             return ConversationView(
               onPressed: () {},
-              avatarWidget: CircularUserAvatar(
-                imageUrl: model.avatarUrl,
-                size: 60,
-              ),
+              avatarUrl: model.avatarUrl,
               lastMessage: model.lastMessage,
               title: model.title,
               updatedTime: model.lastUpdatedTime,
