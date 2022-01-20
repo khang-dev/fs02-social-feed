@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_social_app/src/common/widgets/active_status_indicator.dart';
 import 'package:flutter_social_app/src/common/widgets/circular_user_avatar.dart';
 import 'package:flutter_social_app/src/common/widgets/conversation_view.dart';
-import 'package:flutter_social_app/src/models/conversation.dart';
-import 'package:flutter_social_app/src/models/user.dart';
+import 'package:social_feed_api/models/conversation.dart';
+import 'package:social_feed_api/models/user.dart';
 import 'package:flutter_social_app/src/themes/app_text_styles.dart';
 
 class Day02View extends StatefulWidget {
