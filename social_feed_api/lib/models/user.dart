@@ -1,16 +1,19 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:social_feed_api/models/picture.dart';
 part 'user.g.dart';
 
 @JsonSerializable()
 class User {
-  final int id;
-  final String displayName;
-  final String avatarUrl;
-  final bool isActive;
-  final bool hasStory;
+  final String gender;
+  final String name;
+  final String email;
+  final DateTime dob;
+  final DateTime registered;
+  final String phone;
+  final String status;
+  final Picture picture;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
-
-  User(this.displayName, this.avatarUrl, this.isActive, this.id, this.hasStory);
+  User(this.gender, this.name, this.email, this.dob, this.registered, this.phone, this.status, this.picture);
 }

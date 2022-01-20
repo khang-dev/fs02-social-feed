@@ -7,20 +7,20 @@ part of 'conversation.dart';
 // **************************************************************************
 
 Conversation _$ConversationFromJson(Map<String, dynamic> json) => Conversation(
-      json['title'] as String,
-      json['lastMessage'] as String,
-      json['avatarUrl'] as String,
-      DateTime.parse(json['lastUpdatedTime'] as String),
-      json['id'] as int,
-      json['isUnread'] as bool,
+      json['id'] as String,
+      json['text'] as String,
+      User.fromJson(json['user'] as Map<String, dynamic>),
+      json['reply_count'] as int,
+      json['unread_count'] as int,
+      DateTime.parse(json['created_at'] as String),
     );
 
 Map<String, dynamic> _$ConversationToJson(Conversation instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
-      'lastMessage': instance.lastMessage,
-      'avatarUrl': instance.avatarUrl,
-      'lastUpdatedTime': instance.lastUpdatedTime.toIso8601String(),
-      'isUnread': instance.isUnread,
+      'text': instance.text,
+      'user': instance.user,
+      'reply_count': instance.replyCount,
+      'unread_count': instance.unreadCount,
+      'created_at': instance.createdAt.toIso8601String(),
     };

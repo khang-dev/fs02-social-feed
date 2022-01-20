@@ -83,12 +83,12 @@ class _Day02ViewState extends State<Day02View> {
                     margin: EdgeInsets.only(left: index == 0 ? 8 : 0, right: index == (users.length - 1) ? 8 : 0),
                     child: CircularUserAvatar(
                       onPressed: () {},
-                      imageUrl: model.avatarUrl,
+                      imageUrl: model.picture.medium,
                       bottomRightWidget: ActiveStatusIndicator(
-                        isActive: model.isActive,
+                        isActive: model.status == 'online',
                       ),
-                      displayName: model.displayName,
-                      hasBorder: model.hasStory,
+                      displayName: model.name,
+                      hasBorder: false,
                     ),
                   );
                 },
@@ -108,11 +108,11 @@ class _Day02ViewState extends State<Day02View> {
             final model = conversations[index];
             return ConversationView(
               onPressed: () {},
-              avatarUrl: model.avatarUrl,
-              lastMessage: model.lastMessage,
-              title: model.title,
-              updatedTime: model.lastUpdatedTime,
-              isUnread: model.isUnread,
+              avatarUrl: model.user.picture.medium,
+              lastMessage: model.text,
+              title: model.user.name,
+              updatedTime: model.createdAt,
+              isUnread: model.unreadCount > 0,
             );
           }, childCount: conversations.length))
         ],
