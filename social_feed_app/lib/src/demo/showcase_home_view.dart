@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_social_app/src/themes/app_colors.dart';
 import 'package:flutter_social_app/src/themes/app_text_styles.dart';
 
+import 'day_03_view.dart';
 import 'reusable_widgets_showcase_view.dart';
 import 'day_01_view.dart';
 import 'day_02_view.dart';
@@ -30,6 +31,10 @@ class ShowcaseHomeView extends StatelessWidget {
           _NavigationListTile(
             title: 'Day 02 - UI Challenge',
             navigationRoute: Day02View.routeName,
+          ),
+          _NavigationListTile(
+            title: 'Day 03 - Data Model',
+            navigationRoute: Day03View.routeName,
           ),
         ],
       ),

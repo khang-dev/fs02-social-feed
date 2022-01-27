@@ -5,6 +5,7 @@ import 'package:flutter_social_app/src/demo/day_02_view.dart';
 import 'package:flutter_social_app/src/demo/reusable_widgets_showcase_view.dart';
 import 'package:flutter_social_app/src/themes/app_colors.dart';
 import 'demo/day_01_view.dart';
+import 'demo/day_03_view.dart';
 import 'demo/showcase_home_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
@@ -53,6 +54,8 @@ class MyApp extends StatelessWidget {
                     return const Day01View();
                   case Day02View.routeName:
                     return const Day02View();
+                  case Day03View.routeName:
+                    return const Day03View();
                   default:
                     return const ShowcaseHomeView();
                 }

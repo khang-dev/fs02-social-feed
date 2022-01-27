@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_social_app/src/common/widgets/circular_number_badge.dart';
 import 'package:flutter_social_app/src/themes/app_text_styles.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -6,6 +7,7 @@ import 'circular_user_avatar.dart';
 
 class ConversationView extends StatelessWidget {
   final double? height;
+  final int unreadCount;
   final EdgeInsets? padding;
   final String title;
   final String lastMessage;
@@ -23,6 +25,7 @@ class ConversationView extends StatelessWidget {
       required this.avatarUrl,
       required this.title,
       required this.lastMessage,
+      this.unreadCount = 0,
       required this.updatedTime})
       : super(key: key);
 
@@ -43,6 +46,7 @@ class ConversationView extends StatelessWidget {
                 CircularUserAvatar(
                   imageUrl: avatarUrl,
                   size: 60,
+                  bottomRightWidget: unreadCount > 0 ? CircularNumberBadge(unreadCount) : null,
                 ),
                 const SizedBox(
                   width: 12,
@@ -83,14 +87,10 @@ class ConversationView extends StatelessWidget {
       child: Text(
         lastMessage,
         maxLines: 1,
-        style: TextStyles.body1.copyWith(color: _textColor, fontWeight: isUnread ? FontWeight.w600 : FontWeight.w400),
+        style: TextStyles.body1,
         overflow: TextOverflow.ellipsis,
       ),
     ));
-  }
-
-  Color get _textColor {
-    return isUnread ? Colors.white : Colors.white54;
   }
 
   Expanded _buildTitleAndTime() {
@@ -98,12 +98,7 @@ class ConversationView extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text(
-            title,
-            style: TextStyles.body1Bold.copyWith(
-              color: _textColor,
-            ),
-          ),
+          Text(title, style: TextStyles.body1Bold),
           const Spacer(),
           Text(
             timeago.format(updatedTime),
