@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_social_app/src/demo/day_02_view.dart';
 import 'package:flutter_social_app/src/demo/reusable_widgets_showcase_view.dart';
+import 'package:flutter_social_app/src/features/main_tab/main_tab_view.dart';
 import 'package:flutter_social_app/src/themes/app_colors.dart';
 import 'demo/day_01_view.dart';
 import 'demo/day_03_view.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
                   case Day03View.routeName:
                     return const Day03View();
                   default:
-                    return const ShowcaseHomeView();
+                    return const MainTabView();
                 }
               },
             );
