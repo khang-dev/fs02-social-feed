@@ -1,0 +1,11 @@
+{
+    "appTitle": "flutter_social_app",
+    "@appTitle": {
+      "description": "The title of the application"
+    },
+    "tabHomeTitle": "Bảng tin",
+    "tabStreamsTitle": "Trực tiếp",
+    "tabMessagesTitle": "Tin nhắn",
+    "tabNotificationsTitle": "Thông báo",
+    "tabProfilesTitle": "Hồ sơ"
+  }

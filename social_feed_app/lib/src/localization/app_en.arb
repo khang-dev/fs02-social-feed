@@ -2,5 +2,10 @@
     "appTitle": "flutter_social_app",
     "@appTitle": {
       "description": "The title of the application"
-    }
+    },
+    "tabHomeTitle": "Home",
+    "tabStreamsTitle": "Streams",
+    "tabMessagesTitle": "Messages",
+    "tabNotificationsTitle": "Notifications",
+    "tabProfilesTitle": "Profiles"
   }

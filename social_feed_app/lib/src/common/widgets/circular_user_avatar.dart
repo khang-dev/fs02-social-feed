@@ -10,6 +10,8 @@ class CircularUserAvatar extends StatelessWidget {
   final VoidCallback? onPressed;
   final String? displayName;
   final double? size;
+  final double outerBorderThickness;
+  final double innerBorderThickness;
   final Widget? bottomRightWidget;
   final bool hasBorder;
   const CircularUserAvatar(
@@ -19,6 +21,8 @@ class CircularUserAvatar extends StatelessWidget {
       this.size,
       this.bottomRightWidget,
       this.displayName,
+      this.outerBorderThickness = 2,
+      this.innerBorderThickness = 6,
       this.hasBorder = false})
       : super(key: key);
 
@@ -26,39 +30,36 @@ class CircularUserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final image = Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: hasBorder
-              ? const LinearGradient(colors: [
-                  GradientPalette.pink,
-                  GradientPalette.orange,
-                ], begin: Alignment.topLeft, end: Alignment.bottomRight)
-              : null),
-      child: ClipOval(
-        child: InkWell(
-          borderRadius: BorderRadius.circular(size ?? _defaultSize),
-          onTap: onPressed,
-          child: CachedNetworkImage(
-            imageUrl: imageUrl,
-            fit: BoxFit.cover,
-            width: size ?? _defaultSize,
-            height: size ?? _defaultSize,
-            errorWidget: (context, url, error) {
-              log(error.toString());
-              return const _ErrorImageContent();
-            },
-            placeholder: (context, _) => const _ErrorImageContent(),
-          ),
+    final image = ClipOval(
+      child: InkWell(
+        borderRadius: BorderRadius.circular(size ?? _defaultSize),
+        onTap: onPressed,
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.cover,
+          width: size ?? _defaultSize,
+          height: size ?? _defaultSize,
+          errorWidget: (context, url, error) {
+            log(error.toString());
+            return const _ErrorImageContent();
+          },
+          placeholder: (context, _) => const _ErrorImageContent(),
         ),
       ),
     );
 
+    final avatarImage = hasBorder
+        ? _BorderedWidget(
+            child: image,
+            innerBorderThickness: innerBorderThickness,
+            outerBorderThickness: outerBorderThickness,
+          )
+        : image;
+
     final avatarWidget = bottomRightWidget == null
-        ? image
+        ? avatarImage
         : Stack(
-            children: [image, Positioned(bottom: 0, right: 4, child: bottomRightWidget!)],
+            children: [avatarImage, Positioned(bottom: 0, right: 4, child: bottomRightWidget!)],
           );
 
     if (displayName == null) {
@@ -80,6 +81,35 @@ class CircularUserAvatar extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class _BorderedWidget extends StatelessWidget {
+  final double outerBorderThickness;
+  final double innerBorderThickness;
+  final Widget child;
+  const _BorderedWidget({
+    Key? key,
+    required this.child,
+    this.outerBorderThickness = 2,
+    this.innerBorderThickness = 6,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(outerBorderThickness),
+      decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(colors: [
+            GradientPalette.orange,
+            GradientPalette.red,
+          ], begin: Alignment.topRight, end: Alignment.bottomLeft)),
+      child: Container(
+          padding: EdgeInsets.all(innerBorderThickness),
+          decoration: const BoxDecoration(shape: BoxShape.circle, color: DarkTheme.darkBackground),
+          child: child),
     );
   }
 }

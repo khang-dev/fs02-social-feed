@@ -9,6 +9,11 @@ class StreamView extends StatefulWidget {
 
 class _StreamViewState extends State<StreamView> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container();
   }

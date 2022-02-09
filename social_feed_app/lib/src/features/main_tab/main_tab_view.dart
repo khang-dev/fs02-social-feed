@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_social_app/src/demo/day_03_view.dart';
-import 'package:flutter_social_app/src/features/feed/feed_view.dart';
+import 'package:flutter_social_app/src/features/home/home_view.dart';
 import 'package:flutter_social_app/src/features/messenges/messenges_view.dart';
 import 'package:flutter_social_app/src/features/notifications/notifications_view.dart';
 import 'package:flutter_social_app/src/features/profile/profile_view.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_social_app/src/features/stream/stream_view.dart';
 import 'package:flutter_social_app/src/themes/app_assets.dart';
 import 'package:flutter_social_app/src/themes/app_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainTabView extends StatefulWidget {
   const MainTabView({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class MainTabView extends StatefulWidget {
 class _MainTabViewState extends State<MainTabView> {
   int _currentTabIndex = 0;
   static const List<Widget> _widgets = <Widget>[
-    FeedView(),
+    HomeView(),
     StreamView(),
     MessagesView(),
     NotificationsView(),
@@ -33,11 +33,12 @@ class _MainTabViewState extends State<MainTabView> {
       ),
       bottomNavigationBar: BottomNavigationBar(
           items: [
-            _buildNavBarItem('Home', svgIcon: AppAssets.tabFeedIcon),
-            _buildNavBarItem('Streams', svgIcon: AppAssets.tabStreamIcon),
-            _buildNavBarItem('Messages', svgIcon: AppAssets.tabMessagesIcon),
-            _buildNavBarItem('Notifications', svgIcon: AppAssets.tabNotificationsIcon),
-            _buildNavBarItem('Profiles', svgIcon: AppAssets.tabProfileIcon),
+            _buildNavBarItem(AppLocalizations.of(context)!.tabHomeTitle, svgIcon: AppAssets.tabFeedIcon),
+            _buildNavBarItem(AppLocalizations.of(context)!.tabStreamsTitle, svgIcon: AppAssets.tabStreamIcon),
+            _buildNavBarItem(AppLocalizations.of(context)!.tabMessagesTitle, svgIcon: AppAssets.tabMessagesIcon),
+            _buildNavBarItem(AppLocalizations.of(context)!.tabNotificationsTitle,
+                svgIcon: AppAssets.tabNotificationsIcon),
+            _buildNavBarItem(AppLocalizations.of(context)!.tabProfilesTitle, svgIcon: AppAssets.tabProfileIcon),
           ],
           currentIndex: _currentTabIndex,
           onTap: (index) {

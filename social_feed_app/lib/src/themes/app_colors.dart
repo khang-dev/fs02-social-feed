@@ -37,6 +37,7 @@ class GradientPalette {
   static const black2 = Color(0xFF111D42);
   static const orange = Color(0xFFFF8960);
   static const pink = Color(0xFFFF62A5);
+  static const red = Color(0xFFF54B64);
 }
 
 // #007AFF
